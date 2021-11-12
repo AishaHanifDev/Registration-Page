@@ -36,21 +36,33 @@
      color: white;
      text-align: center;
      margin-top:5%;
-     color:#fff;
+     color:#f1f1f1;
 }
     .IMG {
       margin-left:30%;
       margin-top:20px;
     }
+    span#user,#email{
+      font-size:22px;
+      color:#f1f1f1;
+      text-align:center;
+    }
     
 </style>
     <div class="container">
       <h3>Thank you For Registration !!</h3>
+      <span id="user">User</span>
+      <span id="email">Email</span>
       <img src="images (1).jpg" width="40%" alt="" class="IMG"/>
     </div>
      
+<script>
 
+ document.getElementById("user").innerHTML = JSON.parse(localStorage.getItem('Username'));
+document.getElementById("email").innerHTML = JSON.parse(localStorage.getItem('Email'));
+ 
 
-  
+ </script>
+ 
 </body>
 </html>

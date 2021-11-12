@@ -31,7 +31,7 @@
         <input type="password" name="" id="cfm" placeholder="Check your password" autocomplete="off" required />
         <small>Error Msg</small>
   </div> 
-       <input type="submit" name="" value="Submit" class="btn"/>
+       <input type="submit" name="" value="Submit" class="btn" onclick="passValue()"/>
     </form>
    </div>
 </div>
@@ -126,6 +126,14 @@ const isEmail = (emailVal) => {
       successMsg(usernameVal);
   }
 
+function passValue(){
+
+    var user = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    localStorage.setItem('Username',JSON.stringify(user));
+    localStorage.setItem('Email', JSON.stringify(email));
+    return false;
+}
   
 
  function setErrorMsg(input, errormsgs) {
