@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="FORM.css"> 
+      <title>Login Form</title>
+  </head>
+ <body>
+   <div class="Wrapper">
+     <div class="container">
+      	<form method="POST" class="form" id="form" action="demo.html">
+          <h1 class="title"><i>Login Form !!</i></h1>
+          <div class="control">
+            <input type="text" class="finputs" id="username" placeholder="Fullname*" autocomplete="off" required/>
+            <small>Error Msg</small>
+  </div><br/>
+      <div class="control">
+            <input type="text" class="finputs" id="email" placeholder="E-mail*" autocomplete="off" required/>
+            <small>Error Msg</small>
+  </div><br/>
+      <div class="control">
+        <input type="password" class="finputs" id="password" placeholder="Password*" required/>
+        <small>Error Msg</small>
+</div><br/>
+<div class="control">
+        <input type="password" class="finputs"id="cfm" placeholder="Check your password*" autocomplete="off" required />
+        <small>Error Msg</small>
+  </div>
+      <input type="submit"class="fbutton" value="Continue"onclick="passValue()"/>
+     <p class="ftext">
+       <a id="linkCreateAccount" href="FORM.html" class="flinks">Don't have an account? Sign up for an account..</a>
+    </p>
+  </form>
+</div>
+   </div>
+
+<script>
+            // Login Form Javascript :
+
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const cfm = document.getElementById('cfm');
+
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validate();
+
+})
+
+const sendData = (usernameVal, sRate, count) => {
+    if (sRate === count) {
+        alert("Login Successfull" + " " + usernameVal);
+        location.href = `demo.html?username= ${usernameVal}.innerHTML = ${usernameVal}`;
+   }
+}
+const successMsg = (usernameVal) => {
+    let formControl = document.getElementsByClassName('control');
+    var count = formControl.length - 1;
+    for (var i = 0; i < formControl.length; i++) {
+        if (formControl[i].className === "control success") {
+            var sRate = 0 + i;
+            console.log(sRate);
+            sendData(usernameVal, sRate, count);
+        } else {
+            return false;
+        }
+
+    }
+}
+const isEmail = (emailVal) => {
+    var atSymbol = emailVal.indexOf("@");
+    if (atSymbol < 1) return false;
+    var dot = emailVal.lastIndexOf('.');
+    if (dot <= atSymbol + 2) return false;
+    if (dot === emailVal.length - 1) return false;
+    return true;
+}
+
+const validate = () => {
+     const usernameVal = username.value.trim();
+     const emailVal = email.value.trim();
+     const passwordVal = password.value.trim();
+     const cfmVal = cfm.value.trim();
+
+      if (usernameVal === "") {
+         setErrorMsg(username, 'username cannot be blank');
+    } else if (usernameVal.length <= 2) {
+        setErrorMsg(username, 'minimum 3 character');
+    } else {
+        setSuccessMsg(username);
+     }
+
+     if (emailVal === "") {
+         setErrorMsg(email, 'email cannot be blank');
+     } else if (!isEmail(emailVal)) {
+         setErrorMsg(email, 'Email is not valid');
+     } else {
+         setSuccessMsg(email);
+     }
+     
+     if (passwordVal === "") {
+        setErrorMsg(password, 'password cannot be blank');
+    } else if (passwordVal.length <= 5) {
+        setErrorMsg(password, 'minimum 6 character');
+    } else {
+        setSuccessMsg(password);
+    }
+
+      if (cfmVal === "") {
+       setErrorMsg(cfm, 'password cannot be blank');
+      } else if (passwordVal !== cfmVal) {
+          setErrorMsg(cfm, 'password is incorrect');
+      } else {
+       setSuccessMsg(cfm);
+      }
+      successMsg(usernameVal);
+  }
+  function passValue(){
+
+    var storedName = document.getElementById('username').value;
+    var storedemail = document.getElementById('email').value;
+    user_record = [{"username":user},{"email":email}]
+    user_record.push;
+    localStorage.setItem("UserData :",JSON.stringify(user_record));
+    return false;
+ 
+    if(storedName === user && storedemail === email){
+          alert('You are logged in.');
+      } 
+      else {
+          alert('Error on login');
+      }
+}
+function setErrorMsg(input, errormsgs) {
+     const formControl = input.parentElement;
+     const small = formControl.querySelector('small');
+     formControl.className = "control error";
+          small.innerText = errormsgs;
+ }
+
+
+ function setSuccessMsg(input) {
+    const formControl = input.parentElement;
+    formControl.className = "control success";
+ }  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

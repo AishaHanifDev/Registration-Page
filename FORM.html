@@ -4,12 +4,12 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="FORM.css"> 
-      <title>JS Sign Up Page</title>
+      <title>Sign Up Form</title>
   </head>
  <body>
-     <div class="Wrapper">   
-       <div class="Container">  
-        <h1 class="heading">Sign Up For Free</h1> 
+    <div class="Wrapper">
+    <div class="Container">  
+        <h1 class="heading"><i>Sign Up For Free</i></h1> 
         <form method="POST" class="form" id="form" action="demo.html">
 	   <div class="control">
         <p><label>Full Name<span>*</span></label></p>
@@ -17,8 +17,8 @@
          <small>Error Msg</small>
     </div>
 	      <div class="control">
-	       <p><label>Email Address<span>*</span></label></p>
-	       <input type="email" name="email" id="email" placeholder="Your Email" value="" autocomplete="off" required />
+	       <p><label>E-mail Address<span>*</span></label></p>
+	       <input type="email" name="email" id="email" placeholder="Your E-mail" value="" autocomplete="off" required />
          <small>Error Msg</small>
      </div>
       <div class="control">
@@ -31,14 +31,17 @@
         <input type="password" name="" id="cfm" placeholder="Check your password" autocomplete="off" required />
         <small>Error Msg</small>
   </div> 
-       <input type="submit" name="" value="Submit" class="btn" onclick="passValue()"/>
+       <input type="submit" name="" value="Signup" class="btn" onclick="passValue()"/>
+       <p class="f.text">
+        <a class="flink" href="login.html" id="c.account">Already have an account? Sign in..</a>
+        </p>
     </form>
    </div>
 </div>
-   
 
 
 <script>
+   // Signup Form Javascript :
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
@@ -125,16 +128,61 @@ const isEmail = (emailVal) => {
       }
       successMsg(usernameVal);
   }
+  
+//   function check(){
+//     var storedName = localStorage.getItem('name');
+//     var storedemail = localStorage.getItem('email');
 
-function passValue(){
+//     var user = document.getElementById('username');
+//     var email = document.getElementById('email');
+
+//     if(user.value == storedName && email.value == storedemail){
+//         alert('You are logged in.');
+//     } 
+//     else if {
+//         alert('Error on login');
+//     }
+//     else{
+//         localStorage.setItem('name', name.value);
+//         localStorage.setItem('email', email.value);
+//         alert('Your account has been created');
+//     }
+// }
+// }
+
+ function passValue(){
 
     var user = document.getElementById('username').value;
     var email = document.getElementById('email').value;
-    localStorage.setItem('Username',JSON.stringify(user));
-    localStorage.setItem('Email', JSON.stringify(email));
-    return false;
+      user_record = [{"username":user},{"email":email}]
+      user_record.push;
+     localStorage.setItem("UserData :",JSON.stringify(user_record));
+     
+      return false;
+   var data = [{"username":user},{"email":email}]; 
+      for (var j = 0; j < data; j++) {
+           console.log(data(j));
+         }
+       if(user == storedName && email == storedemail){
+          alert('You are logged in.');
+      } 
+      else {
+          alert('Error on login');
+      }
+ 
 }
-  
+
+   // var user_record = []; 
+ //     for (var j = 0; j < user_record.length; j++) {
+ //          console.log(user_record[j]);
+ //    if(user == user_record && email == user_record){
+ //         alert('You are logged in.');
+ //     } 
+ //     else {
+ //         alert('Error on login');
+ //     }
+ // }
+ 
 
  function setErrorMsg(input, errormsgs) {
      const formControl = input.parentElement;
@@ -148,8 +196,11 @@ function passValue(){
     const formControl = input.parentElement;
     formControl.className = "control success";
  }
+  
+
+
     
-    </script>
+     </script>
     </body>
 </html>
 

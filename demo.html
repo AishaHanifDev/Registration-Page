@@ -37,6 +37,8 @@
      text-align: center;
      margin-top:5%;
      color:#f1f1f1;
+     letter-spacing:5px;
+
 }
     .IMG {
       margin-left:30%;
@@ -47,10 +49,13 @@
       color:#f1f1f1;
       text-align:center;
     }
+    span#user{
+      letter-spacing:5px;
+ }
     
 </style>
     <div class="container">
-      <h3>Thank you For Registration !!</h3>
+      <h3>WELCOME !!</h3>
       <span id="user">User</span>
       <span id="email">Email</span>
       <img src="images (1).jpg" width="40%" alt="" class="IMG"/>
@@ -58,9 +63,23 @@
      
 <script>
 
- document.getElementById("user").innerHTML = JSON.parse(localStorage.getItem('Username'));
-document.getElementById("email").innerHTML = JSON.parse(localStorage.getItem('Email'));
- 
+      // var storedName = JSON.parse(localStorage.getItem('user_record'));
+      // var storedemail = JSON.parse(localStorage.getItem('user_record'));
+     document.getElementById("user").innerHTML = JSON.parse(localStorage.getItem('user_record'));
+     document.getElementById("email").innerHTML = JSON.parse(localStorage.getItem('user_record'));
+
+
+
+     // var user = document.getElementById('user').value;
+     // var email = document.getElementById('email').value;
+
+     // if(user == storedName && email == storedemail){
+     //     alert('You are logged in.');
+     // } 
+     // else {
+     //     alert('Error on login');
+     // }
+
 
  </script>
  
